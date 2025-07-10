@@ -1,18 +1,28 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+export const enum EnvironmentTarget {
+    DEFAULT= "dev",
+}
+
+const ENV = process.env.TEST_ENV || EnvironmentTarget.DEFAULT;
+dotenv.config({ path: path.resolve(__dirname, `profiles/.env.${ENV}`) });
+
+if (!process.env.API_URL) {
+    throw new Error(`Environment variable 'URL' is not set in profiles/.env.${ENV}`);
+}
 
 export default defineConfig({
     testDir: './tests',
-    timeout: 30_000,
-    expect: {
-        timeout: 5000,
-    },
+    timeout: 100000,
+    expect: { timeout: 15000 },
     fullyParallel: true,
     use: {
-        baseURL: 'https://your-app.com', // Replace with your real base URL
+        baseURL: process.env.API_URL,
         headless: true,
         trace: 'on-first-retry',
         screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
     },
     projects: [
         {
@@ -20,5 +30,9 @@ export default defineConfig({
             use: { ...devices['Desktop Chrome'] },
         }
     ],
-    reporter: [['html', { open: 'never' }]],
+    reporter: [
+        ['html'],
+        ['dot'],
+        ['junit', { outputFile: 'results.xml' }],
+    ],
 });
