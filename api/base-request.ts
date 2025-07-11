@@ -22,7 +22,7 @@ export class BaseRequest {
         };
 
         if (token) {
-            headers['Authorization'] = token;
+            headers['Authorization'] = `Token ${token}`;
         }
 
         if (additionalHeaders) {
