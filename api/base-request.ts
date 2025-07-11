@@ -22,7 +22,7 @@ export class BaseRequest {
         };
 
         if (token) {
-            headers['Authorization'] = token;
+            headers['Authorization'] = `Token ${token}`;
         }
 
         if (additionalHeaders) {
@@ -59,7 +59,7 @@ export class BaseRequest {
         return await this.getRequestContext().get(url);
     }
 
-    async postRequest(path: string, payload: object, token?: string) {
+    async postRequest(path: string, payload?: Record<string, any>, token?: string) {
         logger.info(`Sending POST request to: ${this.baseUrl}${path}`);
         await this.init(token);
         return await this.getRequestContext().post(path, {

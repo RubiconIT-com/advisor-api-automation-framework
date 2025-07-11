@@ -1,9 +1,9 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
 export const enum EnvironmentTarget {
-    DEFAULT= "dev",
+    DEFAULT = "dev",
 }
 
 const ENV = process.env.TEST_ENV || EnvironmentTarget.DEFAULT;
@@ -21,15 +21,8 @@ export default defineConfig({
     use: {
         baseURL: process.env.API_URL,
         headless: true,
-        trace: 'on-first-retry',
         screenshot: 'only-on-failure',
     },
-    projects: [
-        {
-            name: 'chromium',
-            use: { ...devices['Desktop Chrome'] },
-        }
-    ],
     reporter: [
         ['html'],
         ['dot'],
