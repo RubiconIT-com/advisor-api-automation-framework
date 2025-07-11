@@ -1,19 +1,26 @@
-import { test, expect } from '@playwright/test';
+import {test, expect} from '@playwright/test';
 import {DcimEp} from "../api/endpoints/dcim-ep";
 
 const apiToken = process.env.API_TOKEN;
 const param = {
-    "per_page":"5"
+    "per_page": "5"
 }
+const deviceId = "5842";
 
 test.describe('Dcim Endpoints Tests', () => {
 
-    test('Get contracts request test', async () => {
-        const dcimEp = new DcimEp();
-        const contractsResp = await dcimEp.getContractsRequest(apiToken!, param);
+    [
+        {name: 'per_page', params: {per_page: '5'}},
+        {name: 'device_sw_id', params: {device_sw_id: `${deviceId}`}},
+        {name: 'device_ea_id', params: {device_ea_id: `${deviceId}`}},
+    ].forEach(({name, params}) => {
+        test(`Get contracts with ${name} param`, async () => {
+            const dcimEp = new DcimEp();
+            const response = await dcimEp.getContractsRequest(apiToken!, params);
 
-        expect(contractsResp.status()).toEqual(200);
-        expect(contractsResp.json()).not.toBeNull();
+            expect(response.status()).toBe(200);
+            expect(response).not.toBeNull();
+        });
     });
 
     test('Get enterprise software request test', async () => {
@@ -35,7 +42,31 @@ test.describe('Dcim Endpoints Tests', () => {
     test('Get dcim devices request test', async () => {
         const dcimEp = new DcimEp();
         const response = await dcimEp.getDcimDevicesRequest(apiToken!);
-        console.log(await response.json());
+
+        expect(response.status()).toEqual(200);
+        expect(response.json()).not.toBeNull();
+    });
+
+    test('Get dcim devices with parent_device_id param request test', async () => {
+        const dcimEp = new DcimEp();
+        const response = await dcimEp.getDcimDevicesWithParamRequest(apiToken!, {"parent_device_id": `${deviceId}`});
+
+        expect(response.status()).toEqual(200);
+        expect(response.json()).not.toBeNull();
+    });
+
+    test('Get cpnts request with deviceId param test', async () => {
+        const dcimEp = new DcimEp();
+        const response = await dcimEp.getCpntsRequestWithParams(apiToken!, {"device_id": `${deviceId}`});
+
+        expect(response.status()).toEqual(200);
+        expect(response.json()).not.toBeNull();
+    });
+
+    test('Get accounts request with deviceId param test', async () => {
+        const dcimEp = new DcimEp();
+        const response = await dcimEp.getAccountsRequest(apiToken!, {"device_id": `${deviceId}`});
+
         expect(response.status()).toEqual(200);
         expect(response.json()).not.toBeNull();
     });
