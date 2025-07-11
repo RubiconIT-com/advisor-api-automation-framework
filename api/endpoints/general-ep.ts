@@ -1,10 +1,9 @@
 import {BaseRequest} from "../base-request";
 
 export class GeneralEP extends BaseRequest {
-    private downloadReportURL: string = "OKR/DownloadExcel/";
+    private homeURL: string = "home/";
 
-    async downloadReportRequest(auth: string, params: Record<string, any>) {
-        return await this.getRequestWithParams(this.downloadReportURL, auth, params);
+    async getHomeRequest(auth: string) {
+        return await this.getRequest(this.homeURL, auth);
     }
-
 }
