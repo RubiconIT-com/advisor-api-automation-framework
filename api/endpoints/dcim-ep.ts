@@ -94,6 +94,7 @@ export class DcimEp extends BaseRequest {
     async getDcimVendorsRequest(auth: string, params?: Record<string, any>) {
         return await this.getRequestWithParams(this.dcimVendorsURL, auth, params);
     }
+
     async getDcimSoftwareRequest(auth: string, params?: Record<string, any>) {
         return await this.getRequestWithParams(this.dcimSoftwareURL, auth, params);
     }
