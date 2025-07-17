@@ -5,7 +5,6 @@ export class DcimEp extends BaseRequest {
     private enterpriseSoftwareURL: string = "api/dcim/enterprise-software/";
     private locationsURL: string = "api/dcim/locations/";
     private devicesURL: string = "api/dcim/devices/";
-    private cpntsURL: string = "api/accounts/";
     private accountsURL: string = "api/dcim/cpnts/";
     private deviceTypesURL: string = "api/dcim/device-types/";
     private deviceRolesURL: string = "api/dcim/device-roles/";
@@ -13,7 +12,6 @@ export class DcimEp extends BaseRequest {
     private dcimCpntTypesURL: string = "api/dcim/cpnt-types/";
     private dcimVirtualChassisURL: string = "api/dcim/virtual-chassis/";
     private dcimVirtualDeviceContextsURL: string = "api/dcim/virtual-device-contexts/";
-    private dcimEnterpriseSoftwareURL: string = "api/dcim/enterprise-software/";
     private dcimSoftwareComponentsURL: string = "api/dcim/software-components/";
     private dcimAccountsURL: string = "api/dcim/accounts/";
     private dcimSuitesURL: string = "api/dcim/suites/";
@@ -115,10 +113,6 @@ export class DcimEp extends BaseRequest {
         return await this.getRequestWithParams(this.dcimSoftwareComponentsURL, auth, params);
     }
 
-    async getDcimEnterpriseSoftwareRequest(auth: string, params?: Record<string, any>) {
-        return await this.getRequestWithParams(this.dcimEnterpriseSoftwareURL, auth, params);
-    }
-
     async getContractsRequest(auth: string, params?: Record<string, any>) {
         return await this.getRequestWithParams(this.contractsURL, auth, params);
     }
@@ -137,10 +131,6 @@ export class DcimEp extends BaseRequest {
 
     async getDcimDevicesWithParamRequest(auth: string, params?: Record<string, any>) {
         return await this.getRequestWithParams(this.devicesURL, auth, params);
-    }
-
-    async getCpntsRequestWithParams(auth: string, params?: Record<string, any>) {
-        return await this.getRequestWithParams(this.cpntsURL, auth, params);
     }
 
     async getAccountsRequest(auth: string, params?: Record<string, any>) {
