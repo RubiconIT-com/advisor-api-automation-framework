@@ -13,33 +13,17 @@ test.describe('General Endpoints Tests', () => {
         expect(await resp.body()).not.toBeNull();
     });
 
-    test('Get qs service request test', async () => {
+    test('Get core jobs request test', async () => {
         const generalEP = new GeneralEP();
-        const resp = await generalEP.getQsDevicesRequest(apiToken!);
+        const resp = await generalEP.getCoreJobsRequest(apiToken!);
 
         expect(resp.status()).toEqual(200);
         expect(await resp.body()).not.toBeNull();
     });
 
-    test('Get qs eox request test', async () => {
+    test('Get data source request test', async () => {
         const generalEP = new GeneralEP();
-        const resp = await generalEP.getQsEoxRequest(apiToken!);
-
-        expect(resp.status()).toEqual(200);
-        expect(await resp.body()).not.toBeNull();
-    });
-
-    test('Get qs spend request test', async () => {
-        const generalEP = new GeneralEP();
-        const resp = await generalEP.getQsSpendRequest(apiToken!);
-
-        expect(resp.status()).toEqual(200);
-        expect(await resp.body()).not.toBeNull();
-    });
-
-    test('Get SaaS provider request test', async () => {
-        const generalEP = new GeneralEP();
-        const resp = await generalEP.getSaasProviderRequest(apiToken!);
+        const resp = await generalEP.getDataSourcesRequest(apiToken!);
 
         expect(resp.status()).toEqual(200);
         expect(await resp.body()).not.toBeNull();

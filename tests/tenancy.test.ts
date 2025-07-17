@@ -3,7 +3,7 @@ import {TenancyEp} from "../api/endpoints/tenancy-ep";
 
 const apiToken = process.env.API_TOKEN;
 
-test.describe('Tenancy Tests', () => {
+test.describe('Tenancy Endpoints Tests', () => {
 
     test('Get tenancy tenants request test', async () => {
         const tenancyEp = new TenancyEp();
@@ -13,7 +13,7 @@ test.describe('Tenancy Tests', () => {
         expect(await resp.body()).not.toBeNull();
     });
 
-    test('Get tenant groups request test', async () => {
+    test('Get tenancy groups request test', async () => {
         const tenancyEp = new TenancyEp();
         const resp = await tenancyEp.getTenantGroupsRequest(apiToken!);
 
@@ -21,7 +21,7 @@ test.describe('Tenancy Tests', () => {
         expect(await resp.body()).not.toBeNull();
     });
 
-    test('Get contacts request test', async () => {
+    test('Get tenancy contacts request test', async () => {
         const tenancyEp = new TenancyEp();
         const resp = await tenancyEp.getContactsRequest(apiToken!);
 
@@ -29,7 +29,7 @@ test.describe('Tenancy Tests', () => {
         expect(await resp.body()).not.toBeNull();
     });
 
-    test('Get contact groups request test', async () => {
+    test('Get tenancy contact groups request test', async () => {
         const tenancyEp = new TenancyEp();
         const resp = await tenancyEp.getContactGroupsRequest(apiToken!);
 
@@ -37,7 +37,7 @@ test.describe('Tenancy Tests', () => {
         expect(await resp.body()).not.toBeNull();
     });
 
-    test('Get contact roles request test', async () => {
+    test('Get tenancy contact roles request test', async () => {
         const tenancyEp = new TenancyEp();
         const resp = await tenancyEp.getContactRolesRequest(apiToken!);
 
@@ -45,7 +45,7 @@ test.describe('Tenancy Tests', () => {
         expect(await resp.body()).not.toBeNull();
     });
 
-    test('Get contact assignments request test', async () => {
+    test('Get tenancy contact assignments request test', async () => {
         const tenancyEp = new TenancyEp();
         const resp = await tenancyEp.getContactAssignmentsRequest(apiToken!);
 
