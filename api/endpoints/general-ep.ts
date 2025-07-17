@@ -2,7 +2,6 @@ import {BaseRequest} from "../base-request";
 
 export class GeneralEP extends BaseRequest {
     private homeURL: string = "home/";
-
     private coreJobsURL: string = "core/jobs";
     private dataSourcesURL: string = "core/data-sources";
     private adminURL: string = "admin";
