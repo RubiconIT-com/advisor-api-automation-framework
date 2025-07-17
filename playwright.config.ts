@@ -13,7 +13,7 @@ if (!process.env.API_URL) {
     throw new Error(`Environment variable 'URL' is not set in profiles/.env.${ENV}`);
 }
 
-export default defineConfig({
+defineConfig({
     testDir: './tests',
     timeout: 100000,
     expect: { timeout: 15000 },
