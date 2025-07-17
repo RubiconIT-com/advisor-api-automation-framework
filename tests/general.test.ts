@@ -28,4 +28,36 @@ test.describe('General Endpoints Tests', () => {
         expect(resp.status()).toEqual(200);
         expect(await resp.body()).not.toBeNull();
     });
+
+    test('Get admin request test', async () => {
+        const generalEP = new GeneralEP();
+        const resp = await generalEP.getAdminRequest(apiToken!);
+
+        expect(resp.status()).toEqual(200);
+        expect(await resp.body()).not.toBeNull();
+    });
+
+    test('Get user profile request test', async () => {
+        const generalEP = new GeneralEP();
+        const resp = await generalEP.getUserProfileRequest(apiToken!);
+
+        expect(resp.status()).toEqual(200);
+        expect(await resp.body()).not.toBeNull();
+    });
+
+    test('Get user preferences request test', async () => {
+        const generalEP = new GeneralEP();
+        const resp = await generalEP.getUserPreferencesRequest(apiToken!);
+
+        expect(resp.status()).toEqual(200);
+        expect(await resp.body()).not.toBeNull();
+    });
+
+    test('Get user password request test', async () => {
+        const generalEP = new GeneralEP();
+        const resp = await generalEP.getUserPasswordRequest(apiToken!);
+
+        expect(resp.status()).toEqual(200);
+        expect(await resp.body()).not.toBeNull();
+    });
 });
